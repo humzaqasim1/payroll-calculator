@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main2 {
     public static void main(String[] args) {
-        try (FileWriter writer = new FileWriter("src/main/resources/payroll.csv");) {
+        try (FileWriter writer = new FileWriter("src/main/resources/payroll.json");) {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
