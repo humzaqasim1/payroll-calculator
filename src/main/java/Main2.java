@@ -1,19 +1,13 @@
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 
 
 public class Main2 {
     public static void main(String[] args) {
-        try {
+        try (FileWriter writer = new FileWriter("src/main/resources/payroll.csv");) {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            // Read 1 header line
-            // id|name|hours-worked|pay-rate
-            // 0 |  1 |    2       | 3
             String header = bufferedReader.readLine();
 
             String input;
@@ -24,7 +18,8 @@ public class Main2 {
                 double hoursWorked = Double.parseDouble(sections[2]);
                 double payRate = Double.parseDouble(sections[3]);
                 Employee employee = new Employee(id, name, hoursWorked, payRate);
-                System.out.println(employee.getName() + " " + employee.calculateGrossPay());
+                System.out.println("Employee name: " + employee.getName() + " Employee gross pay: " + employee.calculateGrossPay());
+                writer.write("Employee name: " + employee.getName() + " Employee gross pay: " + employee.calculateGrossPay() + "\n");
             }
 //            System.out.print("Employee: %s \n Gross pay: %f", sections[1], employee.calculateGrossPay());
         } catch (FileNotFoundException e) {
