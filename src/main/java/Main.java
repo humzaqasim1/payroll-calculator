@@ -20,6 +20,6 @@ public class Main {
 
         double payRate = Double.parseDouble(input);
 
-        System.out.println(name + "'s gross pay is " + (payRate * hoursWorked));
+        System.out.println(name + "'s gross pay is $" + (payRate * hoursWorked));
     }
 }
